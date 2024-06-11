@@ -1,5 +1,5 @@
 # Switchable contact model (SCM)
-SCM modification of LIGGGHTS-PFM code to represent complex porous boundaries and improved primitive geometry functions for fix wall/gran function. SCM enables the representation of repetitive porous structures wihtout the use of meshing due to the use of new primitive wall ycylinder_finite_porous or y_porous. Current version of this model is written for repeating square pores on cylinders and flat rectangles, but the source code could be modified to fit other repetitive porous structures. The SCM code also include modifications for including new primitives types for defining finite cylinders, circles and concentric circles.
+SCM modification of LIGGGHTS-PFM code to represent complex porous boundaries and improved primitive geometry functions for fix wall/gran function. SCM enables the representation of repetitive porous structures without the use of meshing due to the use of new primitive wall ycylinder_finite_porous or yplane_finite_porous. Current version of this model is written for repeating square pores on cylinders and flat rectangles, but the source code could be modified to fit other repetitive porous structures. The SCM code also include modifications for including new primitives types for defining finite cylinders, circles and concentric circles.
 Please find the journal article describing the SCM here:
 The research data of the study above can be found at: https://github.com/DamlaSerper/SCM_Research_Data/tree/main
 
@@ -41,7 +41,7 @@ The research data of the study above can be found at: https://github.com/DamlaSe
     - param[8] = fvoid_hor (fractional distance in horizontal repeating cell which is void)
     - param[9] = ftransition_ver (fractional distance in vertical repeating cell which is void + transition)
     - param[10] = ftransition_hor (fractional distance in horizontal repeating cell which is void + transition)
-    - param[11] = shape (dummy double variable, give '0')*/
+    - param[11] = shape (dummy double variable, give '0')
     - Example syntax: ```fix filtermesh all wall/gran model hertz tangential history primitive type 2 yplane_finite_porous 0.0 0.0 0.0 30.0 30.0 0.162 0.162 0.16407407407407 0.16407407407407 0.17185185185185 0.17185185185185 0.0```
 
     ### You are inteding to use finite cylinders as a shape (primitive type: ycylinder_finite, 5 arguments)
@@ -64,31 +64,6 @@ The research data of the study above can be found at: https://github.com/DamlaSe
     - param[3] = +1 for the region between two circles
     - Example syntax: ```fix top_lid_prim_wall all wall/gran model hertz tangential history primitive type 3 yplane_concencircle_finite 0 0.017 0.069 +1```
 
-- NOTE: Currently all the new primitives are defined along y axis, for other types please modify the code.
-- NOTE: Shear option is only available with the cylinder primitives.
+**- NOTE: Currently all the new primitives are defined along y axis, for other types please modify the code.**
+**- NOTE: Shear option is only available with the cylinder primitives.**
 
-## Modifications to the original LIGGGHT-PFM code:
-### 1. fix_wall_gran.cpp
-- Added lines 127-131: Initialising the variables for adjusting the shear velocity according to an equation
-- Modified line 208 (202 in LIGGGHTS-PUBLIC original): removed int from nPrimitiveArgs, making it available outside the constructor 
-- Added lines 220-271: Adding code for defining new primitive types
-- Added lines 391-406: Shear error messages
-- Added lines 1118-1124: Updating the shear velocity according to an equation
-- Added lines 1152-1417: SCM implementation
-- Removed lines 119-1120 from LIGGGHTS-PUBLIC
-- Added line 1489: Comment line
-- Added lines 1498-1522: The particle location check (with respect to basket wall) is carried out here
-
-### 2. fix_wall_gran.h
-- Added lines 298-302: Shear related variables are defined here
-- Added lines 337-351: Variables definition related to new primitive types
-
-### 3. primitive_wall_definitions.h
-- Added lines 72-75: New primitive wall types definitions
-- Added lines 86-90: Primitive type keywords to be used in LIGGGHTS .in script
-- Added lines 100-105: Number of arguments definition of new primitive wall types
-- Added lines 218-278: Defined a special template for the ycylinder_finite_porous primtive type
-- Added lines 302-309: Defining what to return for chooseContactTemplate function from new primitive types
-- Added lines 331-338: Defining what to return for chooseNeighlistTemplate function from new primitive types
-- Added lines 354-359: Defining what to return for chooseAxis function from new primitive types
-- Added lines 378-383: Defining what to return for chooseCalcRadialDistance function from new primitive types
