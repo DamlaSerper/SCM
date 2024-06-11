@@ -65,5 +65,6 @@ The research data of the study above can be found at: https://github.com/DamlaSe
     - Example syntax: ```fix top_lid_prim_wall all wall/gran model hertz tangential history primitive type 3 yplane_concencircle_finite 0 0.017 0.069 +1```
 
 **- NOTE: Currently all the new primitives are defined along y axis, for other types please modify the code.**
+
 **- NOTE: Shear option is only available with the cylinder primitives.**
 
