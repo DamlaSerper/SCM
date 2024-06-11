@@ -1,15 +1,17 @@
 # Switchable contact model (SCM)
-SCM modification of LIGGGHTS-PUBLIC code to represent complex porous boundaries and improved primitive geometry functions for fix wall/gran function. SCM enables the representation of repetitive porous structures wihtout the use of meshing due to the use of new primitive wall ycylinder_finite_porous. Current version of this model is written for repeatign square pores on a cylinder, but the source code could be modified to fit other repetitive porous structures. The SCM code also include modifications for including new primitives types for defining finite cylinders, circles and concentrci circles.
+SCM modification of LIGGGHTS-PFM code to represent complex porous boundaries and improved primitive geometry functions for fix wall/gran function. SCM enables the representation of repetitive porous structures wihtout the use of meshing due to the use of new primitive wall ycylinder_finite_porous or y_porous. Current version of this model is written for repeating square pores on cylinders and flat rectangles, but the source code could be modified to fit other repetitive porous structures. The SCM code also include modifications for including new primitives types for defining finite cylinders, circles and concentric circles.
+Please find the journal article describing the SCM here:
+The research data of the study above can be found at: https://github.com/DamlaSerper/SCM_Research_Data/tree/main
 
-## Contributing Authors
+**Contributing Authors:**
 - MSc. Damla Serper (Aalto Univeristy, Finland) '*corresponding author*'
 - Dr. Kevin Hanley (University of Edinburgh, UK)
 
 ## How to use the code:
-- Clone this directory into the LIGGGHTS-PUBLIC src directory on your local computer.
+- Clone this directory into the LIGGGHTS-PFM src directory on your local computer.
 - Here the written .gitignore file allows you to only stage the required files within your folder.  
 - Copy and move fix_wall_gran.cpp, fix_wall_gran.h and primitive_wall_definitions.h files from SCM folder to upper src directory, replacing the original LIGGGHTS-PUBLIC versions.
-- Recompile the LIGGGHTS-PUBLIC.
+- Recompile the LIGGGHTS-PFM.
 - Here are some examples of how to add the SCM and new primitive types within LIGGGHTS .in script:
     
     ### You are intending to use SCM to represent a porous cylinder (primitive type: ycylinder_finite_porous, 11 arguments)
@@ -50,7 +52,7 @@ SCM modification of LIGGGHTS-PUBLIC code to represent complex porous boundaries 
 - NOTE: Currently all the new primitives are defined along y axis, for other types please modify the code.
 - NOTE: Shear option is only available with the cylinder primitives.
 
-## Modifications to the original LIGGGHT-PUBLIC code:
+## Modifications to the original LIGGGHT-PFM code:
 ### 1. fix_wall_gran.cpp
 - Added lines 127-131: Initialising the variables for adjusting the shear velocity according to an equation
 - Modified line 208 (202 in LIGGGHTS-PUBLIC original): removed int from nPrimitiveArgs, making it available outside the constructor 
