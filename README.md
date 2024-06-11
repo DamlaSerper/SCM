@@ -28,20 +28,21 @@ The research data of the study above can be found at: https://github.com/DamlaSe
     - param[10] = ftransition_hor (fractional angular distance in planar circumferential cell which is void + transition)
     - For further explanation on these variables please refer to the article.
     - Example syntax: ```fix wall_name all wall/gran model hertz tangential history primitive type 1 ycylinder_finite_porous 0.069 0 0 3 18 -0.0628 0 0.020044 0.01742 0.020544 0.01792 shear x 157.0796```
- 
+
+    ### You are intending to use SCM to represent a porous flat rectangle (primitive type: yplane_finite_porous, 12 arguments)
     - param[0] = position of the y-plane (The y coordinate, meaning the rectangle will be on the x, z dimensions)
-	- param[1] = first coordinate of the left-bottom end of the rectangle (x)
-	- param[2] = other coordinate of the left-bottom end of the rectangle (z)
-	- param[3] = np_ver (integer number of pores in the vertical (z) direction; must be >= 1)
-	- param[4] = np_hor (integer number of pores in a horizontal (x); must be >= 1)
-	- param[5] = A_ver (height of the rectangle)
-	- param[6] = A_hor (length of the rectangle)
-	- param[7] = fvoid_ver (fractional distance in vertical repeating cell which is void)
-	- param[8] = fvoid_hor (fractional distance in horizontal repeating cell which is void)
-	- param[9] = ftransition_ver (fractional distance in vertical repeating cell which is void + transition)
-	- param[10] = ftransition_hor (fractional distance in horizontal repeating cell which is void + transition)
-	- param[11] = shape (dummy double variable, give '0')*/
-    - Example syntax: ```fix wall_name all wall/gran model hertz tangential history primitive type 1 ycylinder_finite_porous 0.069 0 0 3 18 -0.0628 0 0.020044 0.01742 0.020544 0.01792 shear x 157.0796```
+    - param[1] = first coordinate of the left-bottom end of the rectangle (x)
+    - param[2] = other coordinate of the left-bottom end of the rectangle (z)
+    - param[3] = np_ver (integer number of pores in the vertical (z) direction; must be >= 1)
+    - param[4] = np_hor (integer number of pores in a horizontal (x); must be >= 1)
+    - param[5] = A_ver (height of the rectangle)
+    - param[6] = A_hor (length of the rectangle)
+    - param[7] = fvoid_ver (fractional distance in vertical repeating cell which is void)
+    - param[8] = fvoid_hor (fractional distance in horizontal repeating cell which is void)
+    - param[9] = ftransition_ver (fractional distance in vertical repeating cell which is void + transition)
+    - param[10] = ftransition_hor (fractional distance in horizontal repeating cell which is void + transition)
+    - param[11] = shape (dummy double variable, give '0')*/
+    - Example syntax: ```fix filtermesh all wall/gran model hertz tangential history primitive type 2 yplane_finite_porous 0.0 0.0 0.0 30.0 30.0 0.162 0.162 0.16407407407407 0.16407407407407 0.17185185185185 0.17185185185185 0.0```
 
     ### You are inteding to use finite cylinders as a shape (primitive type: ycylinder_finite, 5 arguments)
     - param[0] = radius of the cylinder
