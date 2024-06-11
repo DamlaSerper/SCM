@@ -1,0 +1,9 @@
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!fix_wall_gran.cpp
+!fix_wall_gran.h
+!primitive_wall_definitions.h
+!README.md
